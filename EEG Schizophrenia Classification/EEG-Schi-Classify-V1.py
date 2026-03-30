@@ -1,3 +1,6 @@
+#EEG Schizophrenia Classification
+# Version 1- Simple
+pip install mne
 from glob import glob
 import os
 import mne
@@ -156,3 +159,11 @@ y_pred = cross_val_predict(pipe, feature_array, label_array, cv=gkf, groups=grou
 
 print(classification_report(label_array, y_pred))
 print(confusion_matrix(label_array, y_pred))
+
+#Data Set Link: https://repod.icm.edu.pl/dataset.xhtml?persistentId=doi:10.18150/repod.0107441
+
+#Summary:
+
+#In Version 1, I built a classical ML pipeline for schizophrenia vs. healthy EEG classification using the RepOD “EEG in schizophrenia” dataset (28 EDF recordings total: 14 patients + 14 controls, sampled at 250 Hz with a 19‑channel 10–20 montage). My code loads EDF files from Google Drive via MNE, applies common EEG preprocessing (average/reference set via set_eeg_reference(), band‑pass filtering 0.5–45 Hz), then converts continuous recordings into overlapping fixed‑length epochs (5‑second windows with 1‑second overlap) and stacks all epochs into a single array for learning. Next, I performed handcrafted time‑domain feature extraction per epoch/channel (mean, std, peak‑to‑peak, variance, min/max, argmin/argmax, RMS, absolute first‑difference sum, skewness, kurtosis), concatenated these into a feature vector, and trained a Logistic Regression classifier inside a StandardScaler → LogisticRegression pipeline. To avoid subject leakage, I set up GroupKFold cross‑validation using subject IDs as groups and tuned C with GridSearchCV, reporting a best cross‑validated accuracy around 0.6641522862011926 (as noted in my comment/output). [repod.icm.edu.pl]
+
+
