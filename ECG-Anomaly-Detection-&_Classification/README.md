@@ -1,66 +1,159 @@
-# ECG Anomaly Detection and Classification
+# ❤️ ECG Anomaly Detection & Classification
 
-This repository contains a modular Python implementation for Electrocardiogram (ECG) anomaly detection and classification. The workflow includes data preprocessing, autoencoder-based anomaly detection, supervised classification, and post-hoc misclassification analysis.
+## 📌 Project Overview
 
-## Project Structure
+This project presents a modular Python pipeline for **Electrocardiogram (ECG) anomaly detection and arrhythmia classification**. The system combines **unsupervised autoencoder-based anomaly detection** with **supervised classification models**, mirroring real-world clinical triage workflows — flag anomalies first, then classify by type.
 
-- `config.py` - central project settings, dataset path, Kaggle dataset source, and model hyperparameters.
-- `data_preprocessing.py` - dataset download from Kaggle, cleaning, scaling, and SMOTE balancing.
-- `autoencoder_model.py` - autoencoder architecture, training, and anomaly detection logic.
-- `supervised_models.py` - preparation and training of RandomForest, GradientBoosting, and SVM models.
-- `model_evaluation.py` - ROC and Precision-Recall plotting, plus confusion matrix comparison.
-- `misclassification_analysis.py` - in-depth analysis of misclassified samples and clustering.
-- `utils.py` - plotting utilities for ECG waveforms, label distribution, and confusion matrices.
-- `main.py` - executes the full ECG pipeline from preprocessing through evaluation.
-- `download_data.py` - downloads the Kaggle ECG dataset to `data/ecg.csv`.
-- `requirements.txt` - Python dependencies for the project.
-- `data/ecg.csv` - dataset downloaded from Kaggle when you run the workflow.
+A post-hoc **misclassification analysis** component provides deeper insight into failure modes, supporting iterative model improvement and clinical interpretability.
 
-## Installation
+---
 
-1. Create a Python environment (recommended):
+## 🎯 Objectives
 
-```bash
-python -m venv venv
-venv\Scripts\activate
+- Detect ECG anomalies using an unsupervised autoencoder trained on normal heartbeat patterns
+- Classify ECG signals into known arrhythmia categories using supervised ML models
+- Address class imbalance using SMOTE oversampling for fairer model training
+- Analyse misclassified samples to understand model failure patterns and edge cases
+
+---
+
+## 🧠 Methods & Techniques
+
+- Data cleaning, normalisation (StandardScaler), and SMOTE-based class balancing
+- **Unsupervised anomaly detection:** autoencoder trained on normal ECG signals; anomalies identified via reconstruction error threshold
+- **Supervised classification:** ensemble and kernel-based ML models for arrhythmia type labelling
+- **Misclassification analysis:** clustering of misclassified samples to identify systematic error patterns
+- Automated dataset download from Kaggle on first run
+
+### 📊 Evaluation Metrics
+
+- Accuracy, Precision, Recall, F1-score
+- ROC Curve & AUC
+- Precision-Recall Curve
+- Confusion Matrix
+
+---
+
+## 🤖 Models Implemented
+
+- **Autoencoder** (TensorFlow/Keras) — unsupervised anomaly detection
+- **Random Forest** — supervised classification
+- **Gradient Boosting** — supervised classification
+- **Support Vector Machine (SVM)** — supervised classification
+
+---
+
+## 📊 Dataset
+
+- **ECG Dataset** — Kaggle (`devavratatripathy/ecg-dataset`)
+- Multi-class ECG signal dataset covering normal and various arrhythmia categories
+- Automatically downloaded to `data/ecg.csv` on first run
+- [Dataset Source (Kaggle)](https://www.kaggle.com/datasets/devavratatripathy/ecg-dataset)
+
+---
+
+## 📈 Key Results
+
+- Autoencoder effectively separates normal from anomalous ECG patterns via reconstruction error
+- Random Forest and Gradient Boosting achieve robust classification across arrhythmia categories
+- SMOTE balancing significantly improved recall on minority arrhythmia classes
+- Misclassification analysis revealed systematic confusion between morphologically similar beat types
+
+---
+
+## 🛠️ Tech Stack
+
+- **Programming:** Python
+- **DL Framework:** TensorFlow / Keras
+- **ML:** scikit-learn (Random Forest, Gradient Boosting, SVM)
+- **Class Balancing:** imbalanced-learn (SMOTE)
+- **Data Handling:** NumPy, Pandas
+- **Visualization:** Matplotlib, Seaborn
+- **Dataset Access:** Kaggle API
+- **Environment:** VS Code, Jupyter Notebook
+
+---
+
+## 📂 Project Structure
+
+```
+ECG-Anomaly-Detection-&-Classification/
+│── config.py                       # Project settings, dataset path, hyperparameters
+│── data_preprocessing.py           # Kaggle download, cleaning, scaling, SMOTE
+│── autoencoder_model.py            # Autoencoder architecture, training, anomaly detection
+│── supervised_models.py            # Random Forest, Gradient Boosting, SVM training
+│── model_evaluation.py             # ROC, Precision-Recall curves, confusion matrices
+│── misclassification_analysis.py   # Clustering of misclassified samples
+│── utils.py                        # Plotting utilities for ECG waveforms
+│── main.py                         # Full pipeline execution
+│── download_data.py                # Standalone Kaggle dataset download script
+│── requirements.txt                # Python dependencies
+│── data/ecg.csv                    # Downloaded dataset (auto-generated, not committed)
+└── README.md
 ```
 
-2. Install dependencies:
+---
+
+## ⚙️ Installation & Usage
 
 ```bash
+# 1. Create and activate a virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # macOS/Linux
+
+# 2. Install dependencies
 pip install -r requirements.txt
 ```
 
-## Kaggle Setup
+### Kaggle Setup
 
-This project downloads the ECG dataset from Kaggle automatically on first run. Configure your Kaggle API credentials by placing a `kaggle.json` file in your home directory under `~/.kaggle/kaggle.json` or by setting the environment variables `KAGGLE_USERNAME` and `KAGGLE_KEY`.
+Place your `kaggle.json` credentials at `~/.kaggle/kaggle.json`, or set environment variables:
 
-If you already have the dataset locally, the project will use `data/ecg.csv` directly.
+```bash
+export KAGGLE_USERNAME=your_username
+export KAGGLE_KEY=your_api_key
+```
 
-## Downloading Data Separately
-
-A dedicated data download script is provided for convenience:
+### Download Data (Optional)
 
 ```bash
 python download_data.py
 ```
 
-This will download and extract `ecg.csv` into the `data/` folder.
-
-## Usage
-
-Run the full pipeline:
+### Run Full Pipeline
 
 ```bash
 python main.py
 ```
 
-The script will download the dataset from Kaggle if needed, preprocess the data, train both unsupervised and supervised models, and display evaluation plots.
+> The script will automatically download the dataset if not present, preprocess the data, train both unsupervised and supervised models, and display evaluation plots.
 
-## Notes
+---
 
-- The dataset source is the Kaggle dataset `devavratatripathy/ecg-dataset`.
-- The downloaded file is saved to `data/ecg.csv` by default.
-- Do not commit raw dataset files into the repository. The `data/` folder and `ecg.csv` are ignored by `.gitignore`.
-- If the dataset column names differ from the assumed format, update `data_preprocessing.py` accordingly.
-- The current configuration uses `tensorflow` for the autoencoder and `imbalanced-learn` for SMOTE.
+## ⚠️ Notes
+
+- Do not commit raw dataset files — `data/` and `ecg.csv` are excluded via `.gitignore`
+- If dataset column names differ from the assumed format, update `data_preprocessing.py`
+- TensorFlow is used for the autoencoder; imbalanced-learn for SMOTE
+
+---
+
+## 🚀 Future Work
+
+- Integration of 1D-CNN and transformer-based models for end-to-end ECG classification
+- Real-time anomaly detection pipeline for wearable cardiac monitoring
+- Multimodal fusion with EEG for combined neuro-cardiac state analysis
+- Explainable AI (SHAP) for clinically interpretable feature attribution
+
+---
+
+## 📬 Contact
+
+**Khunsa Iftikhar**
+📧 [khunsaiftikhar123@gmail.com](mailto:khunsaiftikhar123@gmail.com)
+🔗 [linkedin.com/in/khunsa-iftikhar](https://www.linkedin.com/in/khunsa-iftikhar/)
+
+---
+
+⚠️ **Ethical Note:** The ECG dataset is publicly available on Kaggle under open-access terms for non-commercial research. Raw dataset files are not committed to this repository.
