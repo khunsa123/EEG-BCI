@@ -1,191 +1,109 @@
-# 🧠 EEG & BCI Research — Neural Signal Classification
+# 🧠 Multimodal NeuroPhysio Signal Research
 
-> Machine learning pipelines for EEG-based neurological disorder classification.  
-> Projects: **EEG Epilepsy Detection** | **EEG Schizophrenia Classification**
+## 📌 Repository Overview
+
+This repository is a curated collection of research-grade projects in **neurophysiological signal processing and biomedical AI**. Each project applies end-to-end machine learning and deep learning pipelines to clinical and physiological datasets — spanning EEG, ECG, and multimodal biosignal analysis.
+
+> Projects are organized into individual folders, each with its own dedicated `README.md`, source code, and dataset references.
 
 ---
 
-## 📌 Overview
+## 🎯 Research Goals
 
-This repository contains research-grade EEG signal processing and classification pipelines applied to neurological and psychiatric conditions. The work demonstrates end-to-end biomedical signal analysis — from raw EEG preprocessing through feature extraction to ML-based classification — using publicly available clinical EEG datasets.
+- Apply signal processing and ML techniques to real-world clinical neurophysiological data
+- Develop and compare classical and deep learning approaches for biomedical classification
+- Maintain rigorous cross-validation protocols to ensure reproducible, publication-quality results
+- Build toward multimodal fusion of EEG, ECG, and other biosignals for richer diagnostics
 
-These projects form part of an ongoing research programme in **EEG-based cognitive and neurological state analysis**, bridging computational neuroscience and applied machine learning.
+---
+
+## 📁 Projects
+
+| # | Project | Signal Type | Key Techniques | Status |
+|---|---------|------------|----------------|--------|
+| 1 | [EEG Epilepsy Detection](./EEG-Epilepsy-Detection/) | EEG | SVM, Random Forest, 1D-CNN | ✅ Complete |
+| 2 | [EEG Schizophrenia Classification](./EEG-Schizophrenia-Classification/) | EEG | SVM, LSTM, LOSO Cross-Validation | ✅ Complete |
+| 3 | [ECG Anomaly Detection & Classification](./ECG-Anomaly-Detection/) | ECG | Autoencoder, Random Forest, GradientBoosting | ✅ Complete |
+| 4 | *(Coming Soon)* | EEG/fNIRS | Multimodal Fusion, BCI | 🔄 Planned |
+
+---
+
+## 🧠 Research Domains
+
+- ⚡ **EEG Signal Processing** — Epilepsy detection, schizophrenia classification, cognitive state analysis
+- ❤️ **ECG Analysis** — Anomaly detection, arrhythmia classification
+- 🤖 **Biomedical AI** — ML/DL pipelines for clinical decision support
+- 🔗 **Multimodal Biosignal Fusion** — Combining EEG, ECG, and physiological signals
+- 🧩 **Brain–Computer Interfaces (BCI)** — Neural decoding and cognitive state monitoring
+
+---
+
+## 🛠️ General Tech Stack
+
+| Category | Tools & Libraries |
+|----------|------------------|
+| **Languages** | Python |
+| **Signal Processing** | MNE-Python, SciPy, NumPy |
+| **ML / DL Frameworks** | scikit-learn, TensorFlow, PyTorch |
+| **Data Processing** | Pandas, imbalanced-learn (SMOTE) |
+| **Visualization** | Matplotlib, Seaborn |
+| **Environments** | Jupyter Notebook, VS Code, Google Colab |
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-EEG-BCI-Research/
+Multimodal-NeuroPhysio-Signal-Research/
 │
-├── EEG Epilepsy Data Analysis/
-│   ├── preprocessing.py               # Bandpass filtering, artifact removal, segmentation
-│   ├── feature_extraction.py          # Band-power, spectral entropy, statistical features
-│   ├── classification.ipynb           # ML models: SVM, Random Forest, CNN
-│   ├── visualisation.ipynb            # EEG topoplots, PSD plots, confusion matrices
-│   └── results/                       # Saved model outputs and evaluation metrics
+├── EEG-Epilepsy-Detection/             # EEG-based seizure & epilepsy classification
+│   └── README.md
 │
-├── EEG Schizophrenia Classification/
-│   ├── preprocessing.py               # ICA-based artifact removal, epoch extraction
-│   ├── feature_extraction.py          # Coherence, band-power asymmetry, connectivity
-│   ├── classification.ipynb           # Multi-class classification pipeline
-│   ├── cross_validation.ipynb         # Leave-one-subject-out cross-validation
-│   └── results/
+├── EEG-Schizophrenia-Classification/   # Resting-state EEG schizophrenia classification
+│   └── README.md
 │
-└── README.md
+├── ECG-Anomaly-Detection/              # ECG anomaly detection & supervised classification
+│   └── README.md
+│
+└── README.md                           # ← You are here
 ```
 
 ---
 
-## 🔬 Projects
+## 🔬 Research Standards
 
-### Project 1: EEG Epilepsy Detection
+All projects in this repository follow strict methodological standards:
 
-**Research Question:** Can spectral and statistical features extracted from scalp EEG reliably distinguish ictal, interictal, and normal neural activity?
-
-**Dataset:** [Bonn EEG Dataset](https://www.upf.edu/web/ntsa/downloads) — 5 classes (healthy eyes open/closed, interictal, ictal focus, seizure activity), 100 single-channel EEG segments per class, 23.6 seconds each at 173.6 Hz.
-
-**Pipeline:**
-- Bandpass filtering (0.5–40 Hz), notch filter (50 Hz)
-- Segmentation into 1-second epochs
-- Feature extraction: delta/theta/alpha/beta/gamma band-power, spectral entropy, Hjorth parameters, statistical moments
-- Classification: SVM (RBF kernel), Random Forest, 1D-CNN
-- Evaluation: 5-fold cross-validation, per-class F1-score
-
-**Key Results:**
-
-| Model | Accuracy | F1-Score |
-|-------|----------|----------|
-| SVM (RBF) | ~94% | ~0.93 |
-| Random Forest | ~91% | ~0.90 |
-| 1D-CNN | ~96% | ~0.95 |
+- **Reproducibility** — Fixed random seeds, fully documented preprocessing parameters
+- **Cross-validation rigour** — LOSO for subject-level generalization; k-fold for within-dataset evaluation
+- **Ethical compliance** — Only publicly available, anonymised datasets under open-access licenses
+- **No data leakage** — Subject-level splits enforced throughout
 
 ---
 
-### Project 2: EEG Schizophrenia Classification
+## 🚀 Upcoming Projects
 
-**Research Question:** Do resting-state EEG biomarkers — particularly frontal alpha asymmetry and inter-hemisphere coherence — distinguish patients with schizophrenia from healthy controls?
-
-**Dataset:** [Schizophrenia EEG Dataset](https://www.kaggle.com/datasets/broach/button-tone-sz) — resting-state EEG from schizophrenia patients and matched healthy controls.
-
-**Pipeline:**
-- ICA-based ocular and muscular artifact removal
-- Epoch extraction (2-second windows, 50% overlap)
-- Feature extraction: band-power per channel, frontal alpha asymmetry index, inter-hemisphere coherence, Lempel-Ziv complexity
-- Classification: Logistic Regression, SVM, LSTM
-- Evaluation: Leave-One-Subject-Out (LOSO) cross-validation to prevent data leakage
-
-**Key Results:**
-
-| Model | LOSO Accuracy | AUC |
-|-------|--------------|-----|
-| SVM | ~82% | ~0.88 |
-| LSTM | ~85% | ~0.91 |
+- 🧠 EEG-based attention and cognitive load classification (consumer-grade BCI devices)
+- 🔗 Multimodal EEG + ECG fusion for stress and mental workload detection
+- 🌊 fNIRS signal classification for neuroimaging tasks
+- 💡 Explainable AI (SHAP/LIME) applied to EEG biomarker interpretation
 
 ---
 
-## 🛠️ Signal Processing Pipeline
+## 🔗 Related Publications
 
-Both projects share a common preprocessing framework:
-
-```
-Raw EEG
-    ↓
-Bandpass Filter (0.5–40 Hz)
-    ↓
-Notch Filter (50/60 Hz line noise removal)
-    ↓
-ICA Artifact Removal (ocular, muscular)
-    ↓
-Epoch Extraction
-    ↓
-Feature Extraction
-    ↓
-Normalisation (StandardScaler)
-    ↓
-ML Classification
-    ↓
-Cross-Validation Evaluation
-```
-
----
-
-## 🔧 Requirements
-
-```bash
-pip install numpy pandas scipy mne scikit-learn torch matplotlib seaborn
-```
-
-**Key libraries:**
-- `MNE-Python` — EEG preprocessing, ICA, visualisation
-- `scipy` — signal filtering and spectral analysis
-- `scikit-learn` — ML models and cross-validation
-- `PyTorch` — CNN/LSTM models
-
----
-
-## 🚀 Quick Start
-
-```python
-# 1. Clone the repository
-git clone https://github.com/khunsa123/EEG-BCI-Research.git
-cd EEG-BCI-Research
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Download dataset (see dataset links above)
-
-# 4. Run epilepsy pipeline
-cd "EEG Epilepsy Data Analysis"
-python preprocessing.py
-jupyter notebook classification.ipynb
-
-# 5. Run schizophrenia pipeline
-cd "EEG Schizophrenia Classification"
-python preprocessing.py
-jupyter notebook classification.ipynb
-```
-
----
-
-## 🔗 Related Research
-
-This work is part of a broader research programme:
-
-- **Published:** Ahmed, W., Riaz, S., Iftikhar, K., Konur, S. (2023). *Speech Emotion Recognition Using Deep Learning.* Springer LNCS Vol. 14381, SGAI 2023.
+- **Ahmed, W., Riaz, S., Iftikhar, K., Konur, S.** (2023). *Speech Emotion Recognition Using Deep Learning.* Springer LNCS Vol. 14381, SGAI 2023.
 - **In preparation:** Iftikhar, K., Nisar, M.W. *EEG-Based Attention and Cognitive State Analysis Using Consumer-Grade BCI Devices.*
-
----
-
-## 🗒️ Research Notes
-
-### On cross-validation strategy
-Both projects use strict cross-validation protocols (LOSO for schizophrenia, k-fold for epilepsy) to prevent subject-level data leakage — a common methodological error in EEG ML literature that leads to inflated accuracy estimates.
-
-### On feature selection
-Band-power features remain strong baselines for EEG classification tasks. This repository documents both classical feature engineering approaches and deep learning end-to-end approaches, allowing direct comparison.
-
-### On reproducibility
-All random seeds are fixed. Dataset download instructions and preprocessing parameters are fully documented to enable replication.
 
 ---
 
 ## 👩‍🔬 Author
 
-**Khunsa Iftikhar**  
-Computational Neuroscience & AI Researcher  
-MSc Big Data Science (Distinction), University of Bradford, UK  
+**Khunsa Iftikhar**
+MSc Big Data Science (Distinction), University of Bradford, UK
 🔗 [Google Scholar](https://scholar.google.com/citations?hl=en&user=Q-mM508AAAAJ) | [LinkedIn](https://www.linkedin.com/in/khunsa-iftikhar/) | [Website](https://sites.google.com/view/khunsa-iftikhar/)
+📧 khunsaiftikhar123@gmail.com
 
 ---
 
-## 📬 Contact
-
-For questions, collaboration, or dataset access guidance: **khunsaiftikhar123@gmail.com**
-
----
-
-## ⚠️ Ethical Note
-
-All datasets used in this repository are publicly available, anonymised research datasets shared under open-access licenses for non-commercial research purposes. No patient-identifiable information is stored or processed in this repository.
+⚠️ **Ethical Note:** All datasets used across this repository are publicly available, anonymised research datasets shared under open-access licenses for non-commercial research purposes.
