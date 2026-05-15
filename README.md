@@ -2,39 +2,69 @@
 
 ## 📌 Repository Overview
 
-This repository is a curated collection of research-grade projects in **neurophysiological signal processing and biomedical AI**. Each project applies end-to-end machine learning and deep learning pipelines to clinical and physiological datasets — spanning EEG, ECG, and multimodal biosignal analysis.
+This repository documents a portfolio of computational neuroscience research projects focused on multimodal neurophysiological signal analysis. It brings together EEG, iEEG, ECoG, EMG, ECG, and neuroimaging-inspired modeling to advance biomarker discovery, subject-generalizable decoding, and translational neurotechnology.
 
-> Projects are organized into individual folders, each with its own dedicated `README.md`, source code, and dataset references.
+> Projects are organized in dedicated folders with project-level `README.md`, code, analysis notebooks, and dataset references.
+
+---
+
+## 🎯 Research Theme
+
+> My research focuses on multimodal computational neuroscience for decoding pain, cognition, and motor function using EEG, ECoG, EMG, and fMRI, with emphasis on biomarker discovery, cross-subject generalization, and neurophysiological modeling.
+
+
+**Scientific question:**
+
+> How can multimodal neurophysiological signals be integrated to decode cognitive, affective, and motor states in clinically meaningful ways?
+
+---
+
+## 🧠 Computational Neuroscience Domains
+
+| Domain | Main Data Types |
+|---|---|
+| Cognitive neuroscience | EEG, MEG, fMRI |
+| Clinical neurophysiology | EEG, iEEG, ECoG, EMG |
+| BCI / neuroengineering | EEG, EMG, fNIRS |
+| Computational psychiatry | EEG, fMRI |
+| Neuroimaging AI | MRI, fMRI, EEG |
+| Pain neuroscience | EEG, iEEG, ECoG, fMRI, autonomic signals |
+| Rehabilitation neuroscience | EMG, EEG, motion |
 
 ---
 
 ## 🎯 Research Goals
 
-- Apply signal processing and ML techniques to real-world clinical neurophysiological data
-- Develop and compare classical and deep learning approaches for biomedical classification
-- Maintain rigorous cross-validation protocols to ensure reproducible, publication-quality results
-- Build toward multimodal fusion of EEG, ECG, and other biosignals for richer diagnostics
+- Develop interpretable ML/DL pipelines for neurophysiological biomarkers
+- Evaluate cross-subject generalization using subject-wise and LOSO validation
+- Compare classical and deep learning methods for EEG/ECoG/EMG decoding
+- Translate pain, cognition, and motor function decoding into publication-quality research
+- Expand toward multimodal fusion with neuroimaging and BCI paradigms
 
 ---
 
 ## 📁 Projects
 
-| # | Project | Signal Type | Key Techniques | Status |
-|---|---------|------------|----------------|--------|
-| 1 | [EEG Epilepsy Detection](./EEG-Epilepsy-Detection/) | EEG | SVM, Random Forest, 1D-CNN | ✅ Complete |
-| 2 | [EEG Schizophrenia Classification](./EEG-Schizophrenia-Classification/) | EEG | SVM, LSTM, LOSO Cross-Validation | ✅ Complete |
-| 3 | [ECG Anomaly Detection & Classification](./ECG-Anomaly-Detection/) | ECG | Autoencoder, Random Forest, GradientBoosting | ✅ Complete |
-| 4 | *(Coming Soon)* | EEG/fNIRS | Multimodal Fusion, BCI | 🔄 Planned |
+| # | Project | Signal Type | Key Focus | Status |
+|---|---------|------------|-----------|--------|
+| 1 | [EEG Epilepsy Data Analysis](./EEG%20Epilepsy%20Data%20Analysis/) | EEG | Seizure detection, waveform features, CNN/ML fusion | ✅ Complete |
+| 2 | [EEG Schizophrenia Classification](./EEG%20Schizophrenia%20Classification/) | EEG | Resting-state diagnosis, LOSO, LSTM + classical ML | ✅ Complete |
+| 3 | [ECG-Anomaly-Detection-&_Classification](./ECG-Anomaly-Detection-&_Classification/) | ECG | Anomaly detection, autoencoder, ensemble classifiers | ✅ Complete |
+| 4 | [EEG-BCI-Research-Copilot](./EEG-BCI-Research-Copilot/) | EEG | BCI feature engineering, neural decoding, human-in-the-loop workflow | ✅ Complete |
+| 5 | [EMG-Stroke-Recovery-Monitoring](./EMG-Stroke-Recovery-Monitoring/) | EMG | Motor recovery monitoring, feature extraction, rehabilitation analytics | 🔄 In progress |
+| 6 | [Laser‑Evoked Pain EEG Analysis](./Laser%E2%80%91Evoked%20Pain%20EEG%20Analysis/) | EEG | Pain biomarker discovery, laser-evoked potentials, manuscript preparation | ✅ Complete / manuscript in progress |
+| 7 | [Multimodal Motor Imagery Analysis](./Multimodal%20Motor%20Imagery%20Analysis/) | EEG / EMG | Motor imagery decoding, sensor fusion, BCI benchmarking | 🔄 In progress |
+| 8 | [Somatosensory Pain iEEG-ECoG Analysis](./Somatosensory%20Pain%20iEEG-ECoG%20Analysis/) | iEEG / ECoG | Pain decoding, neurophysiological modeling, translational analysis | 🔄 In progress |
 
 ---
 
 ## 🧠 Research Domains
 
-- ⚡ **EEG Signal Processing** — Epilepsy detection, schizophrenia classification, cognitive state analysis
-- ❤️ **ECG Analysis** — Anomaly detection, arrhythmia classification
-- 🤖 **Biomedical AI** — ML/DL pipelines for clinical decision support
-- 🔗 **Multimodal Biosignal Fusion** — Combining EEG, ECG, and physiological signals
-- 🧩 **Brain–Computer Interfaces (BCI)** — Neural decoding and cognitive state monitoring
+- ⚡ **EEG / ECoG Pain Decoding** — Laser-evoked potentials, somatosensory processing, biomarker extraction
+- 🧠 **Cognitive and Psychiatric EEG** — Schizophrenia classification, attention and cognition modeling
+- 💪 **Motor Function & BCI** — Motor imagery analysis, EMG-based stroke recovery monitoring, EEG-BCI research
+- ❤️ **Clinical Signal Analytics** — ECG/EMG anomaly detection, clinical biomarker validation
+- 🔗 **Multimodal Generalization** — Cross-subject validation, fusion of EEG/EMG/ECoG, and future fMRI-informed models
 
 ---
 
@@ -46,7 +76,7 @@ This repository is a curated collection of research-grade projects in **neurophy
 | **Signal Processing** | MNE-Python, SciPy, NumPy |
 | **ML / DL Frameworks** | scikit-learn, TensorFlow, PyTorch |
 | **Data Processing** | Pandas, imbalanced-learn (SMOTE) |
-| **Visualization** | Matplotlib, Seaborn |
+| **Visualization** | Matplotlib, Seaborn, Plotly |
 | **Environments** | Jupyter Notebook, VS Code, Google Colab |
 
 ---
@@ -56,37 +86,36 @@ This repository is a curated collection of research-grade projects in **neurophy
 ```
 Multimodal-NeuroPhysio-Signal-Research/
 │
-├── EEG-Epilepsy-Detection/             # EEG-based seizure & epilepsy classification
-│   └── README.md
-│
-├── EEG-Schizophrenia-Classification/   # Resting-state EEG schizophrenia classification
-│   └── README.md
-│
-├── ECG-Anomaly-Detection/              # ECG anomaly detection & supervised classification
-│   └── README.md
-│
-└── README.md                           # ← You are here
+├── EEG Epilepsy Data Analysis/            # EEG seizure and epilepsy signal analysis
+├── EEG Schizophrenia Classification/      # Resting-state EEG psychiatric classification
+├── ECG-Anomaly-Detection-&_Classification/ # ECG anomaly detection and classification
+├── EEG-BCI-Research-Copilot/              # EEG-based BCI research workflows
+├── EMG-Stroke-Recovery-Monitoring/        # EMG monitoring for motor recovery research
+├── Laser‑Evoked Pain EEG Analysis/         # Pain biomarker analysis from laser-evoked EEG
+├── Multimodal Motor Imagery Analysis/     # Motor imagery decoding and multimodal fusion
+├── Somatosensory Pain iEEG-ECoG Analysis/ # iEEG/ECoG pain decoding and modeling
+└── README.md                              # ← You are here
 ```
 
 ---
 
 ## 🔬 Research Standards
 
-All projects in this repository follow strict methodological standards:
+All projects in this repository follow rigorous research practices:
 
-- **Reproducibility** — Fixed random seeds, fully documented preprocessing parameters
-- **Cross-validation rigour** — LOSO for subject-level generalization; k-fold for within-dataset evaluation
-- **Ethical compliance** — Only publicly available, anonymised datasets under open-access licenses
-- **No data leakage** — Subject-level splits enforced throughout
+- **Reproducibility** — Fixed random seeds, transparent preprocessing, and notebook-driven workflows
+- **Cross-study validation** — LOSO and subject-wise evaluation for generalization
+- **Ethical datasets** — Publicly available, anonymised research datasets used for non-commercial research
+- **No data leakage** — Subject-level splits enforced across training and testing
+- **Publication readiness** — Manuscript and results documentation aligned with journal-ready standards
 
 ---
 
-## 🚀 Upcoming Projects
+## 📌 Current Focus
 
-- 🧠 EEG-based attention and cognitive load classification (consumer-grade BCI devices)
-- 🔗 Multimodal EEG + ECG fusion for stress and mental workload detection
-- 🌊 fNIRS signal classification for neuroimaging tasks
-- 💡 Explainable AI (SHAP/LIME) applied to EEG biomarker interpretation
+- Finalising code and manuscript details for **Laser‑Evoked Pain EEG Analysis**
+- Advancing multimodal decoding in **Motor Imagery** and **Somatosensory Pain iEEG/ECoG**
+- Strengthening cross-subject generalization and biomarker interpretability across projects
 
 ---
 
@@ -106,4 +135,4 @@ MSc Big Data Science (Distinction), University of Bradford, UK
 
 ---
 
-⚠️ **Ethical Note:** All datasets used across this repository are publicly available, anonymised research datasets shared under open-access licenses for non-commercial research purposes.
+⚠️ **Ethical Note:** All datasets used across this repository are publicly available, anonymised, and appropriate for research use.
