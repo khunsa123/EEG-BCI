@@ -4,7 +4,6 @@
 > Upload research papers, then ask questions, extract methods, compare datasets,
 > get pipeline suggestions, and generate citations — all grounded in your own paper library.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/khunsa123/eeg-bci-copilot/blob/main/notebooks/demo.ipynb)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ---
